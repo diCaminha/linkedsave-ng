@@ -5,15 +5,18 @@
   text-align: center;
 }
 
+.card-link {
+  height: auto;
+}
 
 mat-expansion-panel-header {
   background: rgb(49, 49, 49);
 }
 
 .content {
-    padding: 16px;
+  padding: 16px;
 }
 
-.content > mat-card {
-    width: 200px;
+mat-card {
+  height: 200px;
 }

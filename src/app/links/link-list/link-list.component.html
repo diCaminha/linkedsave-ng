@@ -4,6 +4,10 @@
             {{link.title}}
         </mat-expansion-panel-header>
         <p>{{link.linkUrl}}</p>
+        <mat-action-row>
+            <button mat-button color="accent">EDIT</button>
+            <button mat-button color="warn">DELETE</button>
+        </mat-action-row>
     </mat-expansion-panel>
 </mat-accordion>
 <p class="msg-no-links" color="accent" *ngIf="links.length <= 0">No links added yet!</p>

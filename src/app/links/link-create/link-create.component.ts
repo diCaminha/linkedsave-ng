@@ -24,5 +24,6 @@ export class LinkCreateComponent {
             linkUrl: form.value.linkUrl
         }
         this.linksService.addLink(link);
+        form.resetForm();
     }
 }

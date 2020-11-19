@@ -12,16 +12,20 @@ export class LinkCreateComponent {
 
     newLink = 'NO CONTENT';
 
-    constructor(private linksService: LinksService) {}
+    constructor(private linksService: LinksService) { }
 
     onAddLink(form: NgForm) {
-        if(form.invalid) {
+        if (form.invalid) {
             return;
         }
         const link: Link = {
-            id: 24342,
+            id: null,
             title: form.value.title,
-            linkUrl: form.value.linkUrl
+            linkUrl: form.value.linkUrl,
+            source: null,
+            description: null,
+            image: null,
+            logo: null
         }
         this.linksService.addLink(link);
         form.resetForm();

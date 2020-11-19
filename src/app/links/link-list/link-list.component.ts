@@ -24,4 +24,7 @@ export class LinkListComponent implements OnInit {
     this.linksService.deleteLink(id);
   }
 
+  visitPage(link) {
+    window.open(link, "_blank");
+  }
 }

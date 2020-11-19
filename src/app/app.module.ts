@@ -7,6 +7,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 
@@ -34,8 +35,9 @@ import { LinkListComponent } from './links/link-list/link-list.component';
     MatCardModule,
     MatToolbarModule,
     MatExpansionModule,
-    HttpClientModule
-    
+    HttpClientModule,
+    FlexLayoutModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

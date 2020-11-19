@@ -26,6 +26,10 @@ export class LinksService {
                     return {
                         title: link.title,
                         linkUrl: link.linkUrl,
+                        description: link.description,
+                        image: link.image,
+                        source: link.source,
+                        logo: link.logo,
                         id: link._id
                     }
                 });
@@ -51,7 +55,6 @@ export class LinksService {
         this.http.delete(environment.API_URL + 'links/' + id).subscribe(res => {
             this.linksUpdate.next(this.links);
         }, err => {
-            console.log(err);
             this.links = linksBkp;
             this.linksUpdate.next(this.links);
         });

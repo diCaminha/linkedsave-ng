@@ -1,7 +1,19 @@
 :host {
-    display: block;
-    margin-top: 1rem;
+  margin-top: 1rem;
 }
 .msg-no-links {
-    text-align: center;
+  text-align: center;
+}
+
+
+mat-expansion-panel-header {
+  background: rgb(49, 49, 49);
+}
+
+.content {
+    padding: 16px;
+}
+
+.content > mat-card {
+    width: 200px;
 }

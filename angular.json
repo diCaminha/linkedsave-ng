@@ -124,5 +124,8 @@
       }
     }
   },
-  "defaultProject": "linkedsave-ng"
+  "defaultProject": "linkedsave-ng",
+  "cli": {
+    "analytics": "35004d24-3caf-4512-b876-fae9e1e11aad"
+  }
 }

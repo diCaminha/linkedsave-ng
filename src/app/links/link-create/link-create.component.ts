@@ -6,7 +6,10 @@ import { Component } from '@angular/core';
 })
 export class LinkCreateComponent {
 
+    newLink = 'NO CONTENT';
+    enteredValue: string = '';
+
     onAddLink() {
-        console.log("onAddLink function called");
+        console.log(this.enteredValue);
     }
 }

@@ -20,5 +20,8 @@ export class LinkListComponent implements OnInit {
     })
   }
 
+  onDeleteLink(id) {
+    this.linksService.deleteLink(id);
+  }
 
 }

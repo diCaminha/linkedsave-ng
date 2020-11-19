@@ -42,4 +42,18 @@ export class LinksService {
             this.linksUpdate.next(this.links);
         })
     }
+
+    deleteLink(id) {
+        let linksBkp = [...this.links];
+        this.links = this.links.filter(l => l.id !== id);
+        this.linksUpdate.next(this.links);
+
+        this.http.delete(environment.API_URL + 'links/' + id).subscribe(res => {
+            this.linksUpdate.next(this.links);
+        }, err => {
+            console.log(err);
+            this.links = linksBkp;
+            this.linksUpdate.next(this.links);
+        });
+    }
 }

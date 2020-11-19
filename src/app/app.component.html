@@ -1,5 +1,5 @@
 <ls-header></ls-header>
 <main>
-  <ls-link-create></ls-link-create>
-  <ls-link-list></ls-link-list>
+  <ls-link-create (linkCreated)="onAddedLink($event)"></ls-link-create>
+  <ls-link-list [links]="links"></ls-link-list>
 </main>

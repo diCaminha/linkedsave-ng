@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Link } from './models/link';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'linkedsave-ng';
+  links: Link[] = [];
+
+  onAddedLink(link:Link) {
+    console.log("onSsss");
+    this.links.push(link);
+  }
 }

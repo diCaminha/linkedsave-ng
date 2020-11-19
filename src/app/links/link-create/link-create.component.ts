@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { Link } from 'src/app/models/link';
 
 @Component({
     styleUrls: ['./link-create.component.css'],
@@ -8,9 +10,17 @@ import { Component } from '@angular/core';
 export class LinkCreateComponent {
 
     newLink = 'NO CONTENT';
-    enteredValue: string = '';
+    @Output() linkCreated: EventEmitter<Link> = new EventEmitter();
 
-    onAddLink() {
-        console.log(this.enteredValue);
+    onAddLink(form: NgForm) {
+        if(form.invalid) {
+            return;
+        }
+        const link: Link = {
+            id: 24342,
+            title: form.value.title,
+            linkUrl: form.value.linkUrl
+        }
+        this.linkCreated.emit(link);
     }
 }

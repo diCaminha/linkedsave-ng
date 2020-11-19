@@ -1,8 +1,9 @@
 <mat-accordion>
-    <mat-expansion-panel>
+    <mat-expansion-panel *ngFor="let link of links">
         <mat-expansion-panel-header>
-            The title here
+            {{link.title}}
         </mat-expansion-panel-header>
-        <p>the content goes here</p>
+        <p>{{link.linkUrl}}</p>
     </mat-expansion-panel>
 </mat-accordion>
+<p class="msg-no-links" color="accent" *ngIf="links.length <= 0">No links added yet!</p>

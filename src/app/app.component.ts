@@ -6,11 +6,4 @@ import { Link } from './models/link';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  links: Link[] = [];
-
-  onAddedLink(link:Link) {
-    console.log("onSsss");
-    this.links.push(link);
-  }
-}
+export class AppComponent {}

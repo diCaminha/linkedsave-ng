@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Link } from 'src/app/models/link';
+import { LinksService } from '../links.service';
 
 @Component({
     styleUrls: ['./link-create.component.css'],
@@ -10,7 +11,8 @@ import { Link } from 'src/app/models/link';
 export class LinkCreateComponent {
 
     newLink = 'NO CONTENT';
-    @Output() linkCreated: EventEmitter<Link> = new EventEmitter();
+
+    constructor(private linksService: LinksService) {}
 
     onAddLink(form: NgForm) {
         if(form.invalid) {
@@ -21,6 +23,6 @@ export class LinkCreateComponent {
             title: form.value.title,
             linkUrl: form.value.linkUrl
         }
-        this.linkCreated.emit(link);
+        this.linksService.addLink(link);
     }
 }

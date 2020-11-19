@@ -1,12 +1,21 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Link } from 'src/app/models/link';
+import { LinksService } from '../links.service';
 
 @Component({
   selector: 'ls-link-list',
   templateUrl: './link-list.component.html',
   styleUrls: ['./link-list.component.css']
 })
-export class LinkListComponent {
+export class LinkListComponent implements OnInit {
 
-    @Input() links: Link[] = [];
+  links: Link[] = [];
+
+  constructor(private linksService: LinksService) { }
+
+  ngOnInit() {
+    this.links = this.linksService.getLinks();
+  }
+
+
 }

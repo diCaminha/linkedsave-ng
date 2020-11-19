@@ -1,8 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
 import { Link } from '../models/link';
+import { map } from 'rxjs/operators';
+import { title } from 'process';
+import { Subject } from 'rxjs';
 
 @Injectable({
     providedIn: "root"
@@ -18,15 +20,26 @@ export class LinksService {
     }
 
     getLinks() {
-        this.http.get<{ message: string, data: Link[] }>(environment.API_URL + 'links')
-            .subscribe(res => {
-                this.links = res.data;
+        this.http.get<{ message: string, data: any }>(environment.API_URL + 'links')
+            .pipe(map((result) => {
+                return result.data.map(link => {
+                    return {
+                        title: link.title,
+                        linkUrl: link.linkUrl,
+                        id: link._id
+                    }
+                });
+            }))
+            .subscribe(links => {
+                this.links = links;
                 this.linksUpdate.next(this.links);
             });
     }
 
     addLink(link: Link) {
-        this.links.push(link);
-        this.linksUpdate.next(this.links);
+        this.http.post<{ message: string, data: Link }>(environment.API_URL + 'links', link).subscribe(res => {
+            this.links.push(res.data);
+            this.linksUpdate.next(this.links);
+        })
     }
 }

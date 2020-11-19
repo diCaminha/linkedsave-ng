@@ -15,6 +15,9 @@ export class LinkListComponent implements OnInit {
 
   ngOnInit() {
     this.links = this.linksService.getLinks();
+    this.linksService.getLinksUpdateListener().subscribe(links => {
+      this.links = links;
+    })
   }
 
 

@@ -1,3 +1,5 @@
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { Link } from '../models/link';
@@ -9,15 +11,21 @@ export class LinksService {
     private links: Link[] = [];
     private linksUpdate = new Subject<Link[]>();
 
+    constructor(private http: HttpClient) { }
+
     getLinksUpdateListener() {
         return this.linksUpdate.asObservable();
     }
 
     getLinks() {
-        return [...this.links];
+        this.http.get<{ message: string, data: Link[] }>(environment.API_URL + 'links')
+            .subscribe(res => {
+                this.links = res.data;
+                this.linksUpdate.next(this.links);
+            });
     }
 
-    addLink(link:Link) {
+    addLink(link: Link) {
         this.links.push(link);
         this.linksUpdate.next(this.links);
     }

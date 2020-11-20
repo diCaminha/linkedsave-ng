@@ -1,4 +1,17 @@
-mat-toolbar {
-    background: rgb(245, 100, 47);
-    color: rgb(23, 11, 126);
+a {
+  text-decoration: none;
+  color: #424242;
+}
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+mat-icon {
+  font-size: 28px;
 }

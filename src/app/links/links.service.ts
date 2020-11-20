@@ -5,6 +5,7 @@ import { Link } from '../models/link';
 import { map } from 'rxjs/operators';
 import { title } from 'process';
 import { Subject } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Injectable({
     providedIn: "root"
@@ -13,7 +14,7 @@ export class LinksService {
     private links: Link[] = [];
     private linksUpdate = new Subject<Link[]>();
 
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient, private router: Router) { }
 
     getLinksUpdateListener() {
         return this.linksUpdate.asObservable();
@@ -44,6 +45,7 @@ export class LinksService {
         this.http.post<{ message: string, data: Link }>(environment.API_URL + 'links', link).subscribe(res => {
             this.links.push(res.data);
             this.linksUpdate.next(this.links);
+            this.router.navigate(['/']);
         })
     }
 

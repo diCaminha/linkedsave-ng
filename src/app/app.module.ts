@@ -5,8 +5,10 @@ import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 
@@ -36,7 +38,9 @@ import { LinkListComponent } from './links/link-list/link-list.component';
     MatToolbarModule,
     MatExpansionModule,
     HttpClientModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MatIconModule,
+    MatProgressSpinnerModule
 
   ],
   providers: [],

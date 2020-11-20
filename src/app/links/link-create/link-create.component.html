@@ -1,9 +1,5 @@
-<mat-card>
+<mat-card *ngIf="!isLoading; else loader">
     <form (submit)="onAddLink(linkForm)" #linkForm="ngForm">
-        <mat-form-field>
-            <mat-label>Title</mat-label>
-            <input type="text" matInput ngModel name="title">
-        </mat-form-field>
         <mat-form-field>
             <mat-label>URL</mat-label>
             <input type="text" matInput ngModel name="linkUrl" required>
@@ -11,3 +7,9 @@
         <button mat-raised-button color="accent">Save Link</button>
     </form>
 </mat-card>
+<ng-template #loader>
+    <div class="center">
+        <mat-progress-spinner diameter=50 mode="indeterminate" color="accent">
+        </mat-progress-spinner>
+    </div>
+</ng-template>

@@ -11,16 +11,18 @@ import { LinksService } from '../links.service';
 export class LinkCreateComponent {
 
     newLink = 'NO CONTENT';
+    isLoading: boolean = false;
 
     constructor(private linksService: LinksService) { }
 
     onAddLink(form: NgForm) {
+        this.isLoading = true;
         if (form.invalid) {
             return;
         }
         const link: Link = {
             id: null,
-            title: form.value.title,
+            title: null,
             linkUrl: form.value.linkUrl,
             source: null,
             description: null,
@@ -28,6 +30,5 @@ export class LinkCreateComponent {
             logo: null
         }
         this.linksService.addLink(link);
-        form.resetForm();
     }
 }

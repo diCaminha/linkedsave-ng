@@ -19,12 +19,4 @@ export class LinkListComponent implements OnInit {
       this.links = links;
     })
   }
-
-  onDeleteLink(id) {
-    this.linksService.deleteLink(id);
-  }
-
-  visitPage(link) {
-    window.open(link, "_blank");
-  }
 }

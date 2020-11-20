@@ -1,22 +1,5 @@
-:host {
-  margin-top: 1rem;
-}
-.msg-no-links {
-  text-align: center;
-}
+.cardList {
+    display: flex;
+    flex-direction: column;
+  }
 
-.card-link {
-  height: auto;
-}
-
-mat-expansion-panel-header {
-  background: rgb(49, 49, 49);
-}
-
-.content {
-  padding: 16px;
-}
-
-mat-card {
-  height: 200px;
-}

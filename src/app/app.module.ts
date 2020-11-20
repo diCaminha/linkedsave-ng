@@ -20,6 +20,7 @@ import { LinkListComponent } from './links/link-list/link-list.component';
 import { SignupComponent } from './auth/signup/signup.component.';
 import { AuthInterceptor } from './auth/auth-interceptor';
 import { LoginComponent } from './auth/login/login.component';
+import { CardLinkComponent } from './links/components/card-link/card-link.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { LoginComponent } from './auth/login/login.component';
     HeaderComponent,
     LinkListComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    CardLinkComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +46,7 @@ import { LoginComponent } from './auth/login/login.component';
     FlexLayoutModule,
     MatIconModule,
     MatProgressSpinnerModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
 
 
   ],

@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
+import { LinkCreateComponent } from 'src/app/links/link-create/link-create.component';
+import { User } from 'src/app/models/user';
+import { AuthService } from '../auth.service';
 
 @Component({
     selector: 'ls-login',
@@ -13,9 +17,16 @@ export class LoginComponent {
         password: ['']
     });
 
-    constructor(private formBuilder: FormBuilder) { }
-    
+    constructor(private formBuilder: FormBuilder, 
+                private authService: AuthService,
+                private router: Router) { }
+
     onLogin() {
-        console.log(this.loginForm.value['email']);
+        const email = this.loginForm.value['email'];
+        const password = this.loginForm.value['password'];
+        this.authService.login(email, password).subscribe(res => {
+            console.log(res);
+            this.router.navigate(['/']);
+        })
     }
 }

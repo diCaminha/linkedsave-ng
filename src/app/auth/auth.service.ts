@@ -15,7 +15,7 @@ export class AuthService {
         return this.http.post<{ message: string, data: User }>(environment.API_URL + 'auth/signup', user);
     }
 
-    login(user: User) {
-        return this.http.post(environment.API_URL + '/login', user);
+    login(email:string, password: string) {
+        return this.http.post(environment.API_URL + 'auth/login', {email, password});
     }
 }

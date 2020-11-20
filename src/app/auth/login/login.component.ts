@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { LinkCreateComponent } from 'src/app/links/link-create/link-create.component';
-import { User } from 'src/app/models/user';
 import { AuthService } from '../auth.service';
 
 @Component({
@@ -24,9 +22,6 @@ export class LoginComponent {
     onLogin() {
         const email = this.loginForm.value['email'];
         const password = this.loginForm.value['password'];
-        this.authService.login(email, password).subscribe(res => {
-            this.authService.token = res.token;
-            this.router.navigate(['/']);
-        });
+        this.authService.login(email, password);
     }
 }

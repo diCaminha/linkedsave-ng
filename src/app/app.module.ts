@@ -17,9 +17,9 @@ import { LinkCreateComponent } from './links/link-create/link-create.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './header/header.component';
 import { LinkListComponent } from './links/link-list/link-list.component';
-import { LoginComponent } from './auth/login/login.component.';
 import { SignupComponent } from './auth/signup/signup.component.';
 import { AuthInterceptor } from './auth/auth-interceptor';
+import { LoginComponent } from './auth/login/login.component';
 
 @NgModule({
   declarations: [

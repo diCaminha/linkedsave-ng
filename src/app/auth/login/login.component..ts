@@ -17,16 +17,16 @@ export class LoginComponent {
         password: ['']
     });
 
-    constructor(private formBuilder: FormBuilder, 
-                private authService: AuthService,
-                private router: Router) { }
+    constructor(private formBuilder: FormBuilder,
+        private authService: AuthService,
+        private router: Router) { }
 
     onLogin() {
         const email = this.loginForm.value['email'];
         const password = this.loginForm.value['password'];
         this.authService.login(email, password).subscribe(res => {
-            console.log(res);
+            this.authService.token = res.token;
             this.router.navigate(['/']);
-        })
+        });
     }
 }

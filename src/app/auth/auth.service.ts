@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -14,7 +14,12 @@ export class AuthService {
     private _token: string;
     private authStatusListener = new BehaviorSubject<boolean>(false);
 
-    constructor(private http: HttpClient, private router: Router) { }
+    constructor(private http: HttpClient, private router: Router) {
+        if (localStorage.getItem('token')) {
+            this._isAuth = true;
+            this.authStatusListener.next(true);
+        }
+    }
 
     get token() {
         return this._token;

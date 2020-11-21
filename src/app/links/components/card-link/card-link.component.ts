@@ -19,6 +19,7 @@ export class CardLinkComponent {
     }
 
     visitPage() {
+        this.linksService.readLink(this.link.id);
         window.open(this.link.linkUrl, "_blank");
     }
 }

@@ -31,7 +31,8 @@ export class LinksService {
                         image: link.image,
                         source: link.source,
                         logo: link.logo,
-                        id: link._id
+                        id: link._id,
+                        read: link.read
                     }
                 });
             }))
@@ -57,6 +58,21 @@ export class LinksService {
         this.http.delete(environment.API_URL + 'links/' + id).subscribe(res => {
             this.linksUpdate.next(this.links);
         }, err => {
+            this.links = linksBkp;
+            this.linksUpdate.next(this.links);
+        });
+    }
+
+    readLink(linkId: string) {
+        let linksBkp = [...this.links];
+        this.links.map(l => {
+            if (l.id === linkId) l.read = true;
+        });
+        this.linksUpdate.next(this.links);
+        this.http.put(environment.API_URL + 'links/' + linkId + '/read', {linkId}).subscribe(res => {
+            console.log(res);
+        }, err => {
+            console.log(err);
             this.links = linksBkp;
             this.linksUpdate.next(this.links);
         });

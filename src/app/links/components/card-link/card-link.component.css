@@ -6,4 +6,9 @@
 mat-card {
     max-height: 200px;
     max-width: 800px;
+    min-width: 800px;
+}
+
+.seen-link-icon {
+    color: gray;
 }

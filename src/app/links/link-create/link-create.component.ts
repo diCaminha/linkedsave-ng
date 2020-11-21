@@ -27,7 +27,9 @@ export class LinkCreateComponent {
             source: null,
             description: null,
             image: null,
-            logo: null
+            logo: null,
+            read: false,
+            userId: null
         }
         this.linksService.addLink(link);
     }

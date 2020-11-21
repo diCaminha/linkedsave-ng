@@ -5,5 +5,7 @@ export interface Link {
     source: string,
     image: string,
     description: string,
-    logo: string
+    logo: string,
+    read: boolean,
+    userId: string
 }

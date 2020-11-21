@@ -13,6 +13,7 @@ export class AuthService {
     private _isAuth = false;
     private _token: string;
     private authStatusListener = new BehaviorSubject<boolean>(false);
+    tokenTimer: NodeJS.Timer;
 
     constructor(private http: HttpClient, private router: Router) {
         if (localStorage.getItem('token')) {
@@ -45,27 +46,33 @@ export class AuthService {
     }
 
     login(email: string, password: string) {
-        return this.http.post<{ token: string, expiresIn: number }>(environment.API_URL + 'auth/login', { email, password }).subscribe(res => {
-            const token = res.token;
-            this._token = token;
-            if (token) {
-                const expiresInDuration = res.expiresIn;
-                this._isAuth = true;
-                this.authStatusListener.next(true);
+        return this.http.post<{ token: string, expiresIn: number }>(environment.API_URL + 'auth/login', { email, password })
+            .subscribe(response => {
+                const token = response.token;
+                this._token = token;
+                if (token) {
+                    const expiresInDuration = response.expiresIn;
+                    this.tokenTimer = setTimeout(() => {
+                        this.logout();
+                    }, expiresInDuration);
 
-                const now = new Date();
-                const expirationDate = new Date(now.getTime() + expiresInDuration * 1000);
-                this.saveAuthData(token, expirationDate);
+                    this._isAuth = true;
+                    this.authStatusListener.next(true);
 
-                this.router.navigate(['/']);
-            }
-        })
+                    const now = new Date();
+                    const expirationDate = new Date(now.getTime() + expiresInDuration * 1000);
+                    this.saveAuthData(token, expirationDate);
+
+                    this.router.navigate(['/']);
+                }
+            })
     }
 
     logout() {
         this._isAuth = false;
         this.authStatusListener.next(false);
         this.clearAuthData();
+        clearTimeout(this.tokenTimer);
     }
 
     private saveAuthData(token: string, expirationDate: Date) {

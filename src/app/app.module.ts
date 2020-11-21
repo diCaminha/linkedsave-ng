@@ -21,6 +21,7 @@ import { SignupComponent } from './auth/signup/signup.component.';
 import { AuthInterceptor } from './auth/auth-interceptor';
 import { LoginComponent } from './auth/login/login.component';
 import { CardLinkComponent } from './links/components/card-link/card-link.component';
+import { EmptyScreenComponent } from './links/components/empty-screen/empty-screen.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { CardLinkComponent } from './links/components/card-link/card-link.compon
     LinkListComponent,
     LoginComponent,
     SignupComponent,
-    CardLinkComponent
+    CardLinkComponent,
+    EmptyScreenComponent
   ],
   imports: [
     BrowserModule,

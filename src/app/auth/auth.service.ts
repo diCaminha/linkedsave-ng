@@ -17,6 +17,7 @@ export class AuthService {
     constructor(private http: HttpClient, private router: Router) {
         if (localStorage.getItem('token')) {
             this._isAuth = true;
+            this._token = localStorage.getItem('token');
             this.authStatusListener.next(true);
         }
     }

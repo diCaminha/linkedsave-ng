@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 import { Link } from '../models/link';
 import { map } from 'rxjs/operators';
 import { title } from 'process';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { Router } from '@angular/router';
 
 @Injectable({
@@ -69,12 +69,16 @@ export class LinksService {
             if (l.id === linkId) l.read = true;
         });
         this.linksUpdate.next(this.links);
-        this.http.put(environment.API_URL + 'links/' + linkId + '/read', {linkId}).subscribe(res => {
+        this.http.put(environment.API_URL + 'links/' + linkId + '/read', { linkId }).subscribe(res => {
             console.log(res);
         }, err => {
             console.log(err);
             this.links = linksBkp;
             this.linksUpdate.next(this.links);
         });
+    }
+
+    getMetadataLink(url: string): Observable<{ data: Link }> {
+        return this.http.get<{ data: Link }>(environment.API_URL + 'links/meta?url=' + url);
     }
 }

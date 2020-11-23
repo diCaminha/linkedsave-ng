@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Link } from 'src/app/models/link';
 import { LinksService } from '../links.service';
@@ -8,15 +8,34 @@ import { LinksService } from '../links.service';
     selector: 'ls-link-create',
     templateUrl: './link-create.component.html',
 })
-export class LinkCreateComponent {
+export class LinkCreateComponent implements OnInit {
 
     newLink = 'NO CONTENT';
     isLoading: boolean = false;
-    linkForm: FormGroup = this.formBuilder.group({
-        linkUrl: ['', Validators.required],
-    });
+    linkForm: FormGroup;
+    linkPreview: Link = null;
 
     constructor(private linksService: LinksService, private formBuilder: FormBuilder) { }
+
+    ngOnInit() {
+        this.linkForm = this.formBuilder.group({
+            linkUrl: ['', Validators.required],
+        });
+    }
+
+    loadPreview() {
+        if (!this.isValidUrl()) {
+            console.log("not valid url");
+            this.linkForm.controls['linkUrl'].setErrors({ 'incorrect': true });
+            return;
+        }
+
+        this.linksService.getMetadataLink(this.linkForm.value['linkUrl']).subscribe(result => {
+            this.linkPreview = result.data;
+        }, err => {
+            this.linkPreview = null;
+        });
+    }
 
     onAddLink() {
         this.isLoading = true;
@@ -47,7 +66,7 @@ export class LinkCreateComponent {
 
     isValidUrl() {
         try {
-            new URL(this.linkForm.value['linkUrl'],);
+            new URL(this.linkForm.value['linkUrl']);
         } catch (_) {
             return false;
         }
@@ -57,5 +76,10 @@ export class LinkCreateComponent {
 
     getErrorMessage() {
         return "Invalid URL. Please paste a correct link."
+    }
+
+    clearLink() {
+        this.linkPreview = null;
+        this.linkForm.reset();
     }
 }

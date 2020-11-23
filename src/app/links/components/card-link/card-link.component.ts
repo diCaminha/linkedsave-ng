@@ -11,6 +11,8 @@ export class CardLinkComponent {
 
     @Input()
     link: Link;
+    @Input()
+    isPreview: boolean = false;
 
     constructor(private linksService: LinksService) { }
 

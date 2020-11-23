@@ -1,13 +1,23 @@
 <mat-card *ngIf="!isLoading; else loader">
-    <form [formGroup]="linkForm" (ngSubmit)="onAddLink()">
+    <form [formGroup]="linkForm" (ngSubmit)="loadPreview()">
         <mat-form-field>
             <mat-label style="font-family: 'Courier New', Courier, monospace;">Paste here the URL...</mat-label>
             <input type="text" matInput formControlName="linkUrl" required>
             <mat-error *ngIf="linkForm.controls['linkUrl'].invalid">{{getErrorMessage()}}</mat-error>
         </mat-form-field>
-        <button mat-raised-button style="font-family: 'Courier New', Courier, monospace;" color="accent">Save Link</button>
+        <button *ngIf="!linkPreview" mat-raised-button style="font-family: 'Courier New', Courier, monospace;"
+            color="primary">Load Link Data</button>
+        <div *ngIf="linkPreview" fxLayoutGap="5px">
+            <button mat-raised-button style="font-family: 'Courier New', Courier, monospace;"
+                color="accent">Save</button>
+            <button (click)="clearLink()" mat-raised-button style="font-family: 'Courier New', Courier, monospace;"
+                color="warn">Clear</button>
+        </div>
     </form>
 </mat-card>
+<div class="card-preview">
+    <ls-card-link *ngIf="linkPreview != null" [link]="linkPreview" [isPreview]="true"></ls-card-link>
+</div>
 <ng-template #loader>
     <div>
         <mat-progress-spinner class="loader" diameter=50 mode="indeterminate" color="accent">

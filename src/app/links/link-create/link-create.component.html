@@ -1,17 +1,36 @@
 <mat-card *ngIf="!isLoading; else loader">
     <form [formGroup]="linkForm" (ngSubmit)="loadPreview()">
         <mat-form-field>
-            <mat-label style="font-family: 'Courier New', Courier, monospace;">Paste here the URL...</mat-label>
+            <mat-label 
+                style="font-family: 'Courier New', Courier, monospace;">
+                Paste here the URL...
+            </mat-label>
             <input type="text" matInput formControlName="linkUrl" required>
             <mat-error *ngIf="linkForm.controls['linkUrl'].invalid">{{getErrorMessage()}}</mat-error>
         </mat-form-field>
-        <button *ngIf="!linkPreview" mat-raised-button style="font-family: 'Courier New', Courier, monospace;"
-            color="primary">Load Link Data</button>
+
+        <button 
+            *ngIf="!linkPreview" 
+            mat-raised-button style="font-family: 'Courier New', Courier, monospace;"
+            color="primary">
+            Load Link Data
+        </button>
+        
         <div *ngIf="linkPreview" fxLayoutGap="5px">
-            <button mat-raised-button style="font-family: 'Courier New', Courier, monospace;"
-                color="accent">Save</button>
-            <button (click)="clearLink()" mat-raised-button style="font-family: 'Courier New', Courier, monospace;"
-                color="warn">Clear</button>
+            <button 
+                (click)="save()" 
+                mat-raised-button 
+                style="font-family: 'Courier New', Courier, monospace;"
+                color="accent">
+                Save
+            </button>
+            <button 
+                (click)="clearLink()" 
+                mat-raised-button 
+                style="font-family: 'Courier New', Courier, monospace;"
+                color="warn">
+                Clear
+            </button>
         </div>
     </form>
 </mat-card>

@@ -24,22 +24,29 @@ export class LinkCreateComponent implements OnInit {
     }
 
     loadPreview() {
+        this.linkForm.controls['linkUrl'].disable();
+        this.isLoading = true;
         if (!this.isValidUrl()) {
             console.log("not valid url");
             this.linkForm.controls['linkUrl'].setErrors({ 'incorrect': true });
+            this.isLoading = false;
             return;
         }
 
         this.linksService.getMetadataLink(this.linkForm.value['linkUrl']).subscribe(result => {
             this.linkPreview = result.data;
+            this.isLoading = false;
         }, err => {
             this.linkPreview = null;
+            this.isLoading = false;
         });
     }
 
-    onAddLink() {
+    save() {
+        this.linkForm.controls['linkUrl'].enable();
         this.isLoading = true;
         if (this.linkForm.invalid) {
+            console.log("invalido");
             return;
         }
 
@@ -79,6 +86,7 @@ export class LinkCreateComponent implements OnInit {
     }
 
     clearLink() {
+        this.linkForm.controls['linkUrl'].enable();
         this.linkPreview = null;
         this.linkForm.reset();
     }

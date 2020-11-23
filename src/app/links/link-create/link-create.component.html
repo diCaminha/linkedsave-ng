@@ -2,7 +2,7 @@
     <form [formGroup]="linkForm" (ngSubmit)="loadPreview()">
         <mat-form-field>
             <mat-label 
-                style="font-family: 'Courier New', Courier, monospace;">
+                style="font-family: 'Courier New', Courier, monospace; color: white">
                 Paste here the URL...
             </mat-label>
             <input type="text" matInput formControlName="linkUrl" required>
@@ -15,7 +15,7 @@
             color="primary">
             Load Link Data
         </button>
-        
+
         <div *ngIf="linkPreview" fxLayoutGap="5px">
             <button 
                 (click)="save()" 

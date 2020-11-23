@@ -13,3 +13,7 @@ mat-card {
 .seen-link-icon {
     color: gray;
 }
+
+mat-card-title {
+    cursor: pointer;
+}

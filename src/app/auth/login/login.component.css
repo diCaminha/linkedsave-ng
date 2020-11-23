@@ -8,3 +8,11 @@ mat-card {
   margin-top: 1rem;
   text-align: center;
 }
+
+.font-green {
+  color: #69f0ae;
+}
+
+.font-ls {
+  font-family: "Courier New", Courier, monospace;
+}

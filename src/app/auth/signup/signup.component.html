@@ -1,4 +1,6 @@
 <mat-card>
+    <h1 class="font-ls font-green">LinkSaved</h1>
+    <h2 class="font-ls font-green">save your link, read it later.</h2>
     <form [formGroup]="signupForm" (ngSubmit)="onSignup()">
         <mat-form-field>
             <mat-label>Email</mat-label>
@@ -14,7 +16,7 @@
         </mat-form-field>
 
         <div fxLayout="column">
-            <button mat-raised-button color="accent">Register</button>
+            <button mat-raised-button color="primary">Register</button>
             <a mat-flat-button [routerLink]="['/login']">already an user?</a>
         </div>
     </form>

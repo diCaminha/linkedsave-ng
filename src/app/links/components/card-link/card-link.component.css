@@ -1,19 +1,24 @@
 :host {
-    margin-top: 30px;
+  margin-top: 30px;
   border-radius: 8px;
 }
 
 mat-card {
-    max-height: 200px;
-    max-width: 800px;
-    min-width: 800px;
-    font-family: 'Courier New', Courier, monospace;
+  max-height: 200px;
+  max-width: 800px;
+  min-width: 800px;
+  font-family: "Courier New", Courier, monospace;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+mat-card:hover {
+  box-shadow: 0 18px 22px 0 rgba(0, 0, 0, 0.2);
 }
 
 .seen-link-icon {
-    color: gray;
+  color: gray;
 }
 
 mat-card-title {
-    cursor: pointer;
+  cursor: pointer;
 }

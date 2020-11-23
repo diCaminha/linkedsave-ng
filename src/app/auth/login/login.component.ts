@@ -20,6 +20,7 @@ export class LoginComponent {
         private router: Router) { }
 
     onLogin() {
+        this.isLoading = true;
         const email = this.loginForm.value['email'];
         const password = this.loginForm.value['password'];
         this.authService.login(email, password);

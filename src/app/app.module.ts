@@ -8,6 +8,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
@@ -22,6 +23,7 @@ import { AuthInterceptor } from './auth/auth-interceptor';
 import { LoginComponent } from './auth/login/login.component';
 import { CardLinkComponent } from './links/components/card-link/card-link.component';
 import { EmptyScreenComponent } from './links/components/empty-screen/empty-screen.component';
+import { HighlightOnHoverLinkDirective } from './directives/highlight-on-hover-link.directive';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,8 @@ import { EmptyScreenComponent } from './links/components/empty-screen/empty-scre
     LoginComponent,
     SignupComponent,
     CardLinkComponent,
-    EmptyScreenComponent
+    EmptyScreenComponent,
+    HighlightOnHoverLinkDirective
   ],
   imports: [
     BrowserModule,
@@ -49,6 +52,7 @@ import { EmptyScreenComponent } from './links/components/empty-screen/empty-scre
     MatIconModule,
     MatProgressSpinnerModule,
     ReactiveFormsModule,
+    MatTooltipModule
 
 
   ],

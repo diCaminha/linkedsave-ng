@@ -13,8 +13,13 @@
         </mat-form-field>
 
         <div fxLayout="column">
-            <button mat-raised-button color="primary">Go</button>
+            <button *ngIf="!isLoading; else loadingIcon" mat-raised-button color="primary">Go</button>
             <a mat-flat-button [routerLink]="['/signup']">not registered yet?</a>
         </div>
+        <ng-template #loadingIcon>
+            <div fxLayout="column">
+                <mat-progress-spinner class="loader" diameter=50 mode="indeterminate" color="accent"></mat-progress-spinner>
+            </div>
+        </ng-template>
     </form>
 </mat-card>

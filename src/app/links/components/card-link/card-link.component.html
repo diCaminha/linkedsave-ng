@@ -1,6 +1,6 @@
 <mat-card>
     <mat-card-header>
-        <mat-card-title (click)="visitPage()">{{link.title}}</mat-card-title>
+        <mat-card-title (click)="visitPage()" lsHighlightOver>{{link.title}}</mat-card-title>
         <mat-card-subtitle>{{link.source}}</mat-card-subtitle>
         <mat-icon *ngIf="!link.read && !isPreview" color="primary">remove_red_eye</mat-icon>
         <mat-icon *ngIf="link.read && !isPreview" class="seen-link-icon">remove_red_eye</mat-icon>
@@ -10,7 +10,7 @@
         <p *ngIf="link.description.length > 0">{{link.description.substring(0,200)}}...</p>
     </mat-card-content>
     <mat-card-actions *ngIf="!isPreview">
-        <button mat-button (click)="visitPage()" color="accent"><mat-icon>call_made</mat-icon></button>
-        <button mat-button (click)="onDeleteLink()" color="warn"><mat-icon>delete</mat-icon></button>
+        <button mat-button (click)="visitPage()" matTooltip="open the content" color="accent"><mat-icon>call_made</mat-icon></button>
+        <button mat-button (click)="onDeleteLink()" matTooltip="delete the link" color="warn"><mat-icon>delete</mat-icon></button>
     </mat-card-actions>
 </mat-card>

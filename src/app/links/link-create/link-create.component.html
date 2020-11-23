@@ -1,8 +1,9 @@
 <mat-card *ngIf="!isLoading; else loader">
-    <form (submit)="onAddLink(linkForm)" #linkForm="ngForm">
+    <form [formGroup]="linkForm" (ngSubmit)="onAddLink()">
         <mat-form-field>
-            <mat-label style="font-family: 'Courier New', Courier, monospace;">Paste here the URL you want to see later...</mat-label>
-            <input type="text" matInput ngModel name="linkUrl" required>
+            <mat-label style="font-family: 'Courier New', Courier, monospace;">Paste here the URL...</mat-label>
+            <input type="text" matInput formControlName="linkUrl" required>
+            <mat-error *ngIf="linkForm.controls['linkUrl'].invalid">{{getErrorMessage()}}</mat-error>
         </mat-form-field>
         <button mat-raised-button style="font-family: 'Courier New', Courier, monospace;" color="accent">Save Link</button>
     </form>

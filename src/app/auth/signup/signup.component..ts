@@ -24,7 +24,7 @@ export class SignupComponent {
     onSignup() {
         const newUser: User = {
             id: null,
-            name: this.signupForm.value['email'],
+            name: this.signupForm.value['name'],
             email: this.signupForm.value['email'],
             password: this.signupForm.value['password'],
         }

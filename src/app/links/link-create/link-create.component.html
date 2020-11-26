@@ -5,7 +5,7 @@
                 style="font-family: 'Courier New', Courier, monospace; color: white">
                 Paste here the URL...
             </mat-label>
-            <input type="text" [inputAutoFocus]="focus" matInput formControlName="linkUrl" required>
+            <input type="text" inputAutoFocus matInput formControlName="linkUrl" required>
             <mat-error *ngIf="linkForm.controls['linkUrl'].invalid">{{getErrorMessage()}}</mat-error>
         </mat-form-field>
 

@@ -1,4 +1,17 @@
+<div>
+  <p *ngIf="hasRead; else noRead" class="message-reads" fxLayoutAlign="center center">
+    Congrats, you've read 4 links!
+    <mat-icon class="icon-message-reads" color="primary">military_tech</mat-icon>
+  </p>
+  <ng-template #noRead>
+    <p class="message-reads" fxLayoutAlign="center center">
+        You haven't visit any link yet. Are you there?
+        <mat-icon class="icon-message-reads" color="primary">outlet</mat-icon>
+      </p>
+  </ng-template>
+</div>
+
 <div fxLayout="column" fxLayoutAlign="center center">
-    <ls-card-link  *ngFor="let link of links" [link]="link"></ls-card-link>
-    <ls-empty-screen *ngIf="links.length <= 0"></ls-empty-screen>
+  <ls-card-link *ngFor="let link of links" [link]="link"></ls-card-link>
+  <ls-empty-screen *ngIf="links.length <= 0"></ls-empty-screen>
 </div>

@@ -3,3 +3,13 @@
     flex-direction: column;
   }
 
+.message-reads {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: large;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.icon-message-reads {
+  margin-left: 3px;
+}

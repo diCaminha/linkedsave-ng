@@ -21,6 +21,7 @@ export class LinkCreateComponent implements OnInit {
         this.linkForm = this.formBuilder.group({
             linkUrl: ['', Validators.required],
         });
+
     }
 
     loadPreview() {

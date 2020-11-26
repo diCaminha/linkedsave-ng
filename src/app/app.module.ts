@@ -24,6 +24,7 @@ import { LoginComponent } from './auth/login/login.component';
 import { CardLinkComponent } from './links/components/card-link/card-link.component';
 import { EmptyScreenComponent } from './links/components/empty-screen/empty-screen.component';
 import { HighlightOnHoverLinkDirective } from './directives/highlight-on-hover-link.directive';
+import { InputFocusDirective } from './directives/input-focus.directive';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { HighlightOnHoverLinkDirective } from './directives/highlight-on-hover-l
     SignupComponent,
     CardLinkComponent,
     EmptyScreenComponent,
-    HighlightOnHoverLinkDirective
+    HighlightOnHoverLinkDirective,
+    InputFocusDirective
   ],
   imports: [
     BrowserModule,

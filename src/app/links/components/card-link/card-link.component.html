@@ -11,7 +11,7 @@
     </mat-card-content>
     <mat-card-actions *ngIf="!isPreview">
         <button mat-button (click)="visitPage()" matTooltip="open the content" color="accent"><mat-icon>call_made</mat-icon></button>
-        <button mat-button (click)="copyLinkUrl(linkUrl)"> <mat-icon class="copy-icon" color="accent">content_copy</mat-icon></button>
+        <button mat-button (click)="copyLinkUrl(linkUrl)" matTooltip="copy link"> <mat-icon class="copy-icon" color="accent">content_copy</mat-icon></button>
         <button mat-button (click)="onDeleteLink()" matTooltip="delete the link" color="warn"><mat-icon>delete</mat-icon></button>
         <input hidden #linkUrl value="{{link.linkUrl}}">
     </mat-card-actions>

@@ -16,3 +16,7 @@ mat-card {
 .font-ls {
   font-family: "Courier New", Courier, monospace;
 }
+
+.loading {
+  margin: auto;
+}

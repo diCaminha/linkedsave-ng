@@ -22,3 +22,7 @@ mat-card:hover {
 mat-card-title {
   cursor: pointer;
 }
+
+.link-data {
+  visibility: hidden;
+}

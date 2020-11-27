@@ -6,6 +6,7 @@ import { map } from 'rxjs/operators';
 import { title } from 'process';
 import { Observable, Subject } from 'rxjs';
 import { Router } from '@angular/router';
+import { link } from 'fs';
 
 @Injectable({
   providedIn: 'root',
@@ -31,6 +32,7 @@ export class LinksService {
       .get<{ message: string; data: any }>(environment.API_URL + 'links')
       .pipe(
         map((result) => {
+          console.log(result.data);
           return result.data.map((link) => {
             return {
               title: link.title,
@@ -92,24 +94,27 @@ export class LinksService {
   }
 
   readLink(linkId: string) {
-    let linksBkp = [...this.links];
-    this.links.map((l) => {
-      if (l.id === linkId) l.read = true;
-    });
-    this.linksUpdate.next(this.links);
-    this.http
-      .put(environment.API_URL + 'links/' + linkId + '/read', { linkId })
-      .subscribe(
-        (res) => {
-          console.log(res);
-          this.getCounterLinks();
-        },
-        (err) => {
-          console.log(err);
-          this.links = linksBkp;
-          this.linksUpdate.next(this.links);
-        }
-      );
+    console.log(linkId);
+    const linkToRead = this.links.find(l => l.id == linkId);
+    if (!linkToRead.read) {
+      let linksBkp = [...this.links];
+      this.links.map((l) => {
+        if (l.id === linkId) l.read = true;
+      });
+      this.linksUpdate.next(this.links);
+      this.http
+        .put(environment.API_URL + 'links/' + linkId + '/read', { linkId })
+        .subscribe(
+          (res) => {
+            this.getCounterLinks();
+          },
+          (err) => {
+            console.log(err);
+            this.links = linksBkp;
+            this.linksUpdate.next(this.links);
+          }
+        );
+    }
   }
 
   getMetadataLink(url: string): Observable<{ data: Link }> {

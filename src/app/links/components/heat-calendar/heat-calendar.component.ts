@@ -39,60 +39,78 @@ export class HeatCalendarComponent {
     this.dayreadservice.getDayReads().subscribe(
       (result) => {
         this.mondayReads = result.data.filter(
+          (dayread) => dayread.dayWeek === 'Monday'
+        );
+        this.tuesdayReads = result.data.filter(
+          (dayread) => dayread.dayWeek === 'Tuesday'
+        );
+        this.wednesdayReads = result.data.filter(
+          (dayread) => dayread.dayWeek === 'Wednesday'
+        );
+        this.thrusdayReads = result.data.filter(
+          (dayread) => dayread.dayWeek === 'Thursday'
+        );
+        this.fridayReads = result.data.filter(
+          (dayread) => dayread.dayWeek === 'Friday'
+        );
+        this.saturdayReads = result.data.filter(
+          (dayread) => dayread.dayWeek === 'Saturday'
+        );
+        this.sundayReads = result.data.filter(
           (dayread) => dayread.dayWeek === 'Sunday'
         );
+
+        this.chartOptions = {
+          series: [
+            {
+              name: 'Monday',
+              data: this.generateData(50, this.mondayReads),
+            },
+            {
+              name: 'Tuesday',
+              data: this.generateData(50, this.tuesdayReads),
+            },
+            {
+              name: 'Wednesday',
+              data: this.generateData(50, this.wednesdayReads),
+            },
+            {
+              name: 'Thursday',
+              data: this.generateData(50, this.thrusdayReads),
+            },
+            {
+              name: 'Friday',
+              data: this.generateData(50, this.fridayReads),
+            },
+            {
+              name: 'Saturday',
+              data: this.generateData(50, this.saturdayReads),
+            },
+            {
+              name: 'Sunday',
+              data: this.generateData(50, this.sundayReads),
+            },
+          ],
+          chart: {
+            height: 250,
+            type: 'heatmap',
+          },
+          dataLabels: {
+            enabled: false,
+          },
+          colors: ['#7b1fa2'],
+          title: {
+            text: 'Histórico de links acessados',
+          },
+        };
       },
       (err) => {
         console.log(err);
       }
     );
-    this.chartOptions = {
-      series: [
-        {
-          name: 'Monday',
-          data: this.generateData(50, this.mondayReads),
-        },
-        {
-          name: 'Tuesday',
-          data: this.generateData(50, this.tuesdayReads),
-        },
-        {
-          name: 'Wednesday',
-          data: this.generateData(50, this.wednesdayReads),
-        },
-        {
-          name: 'Thursday',
-          data: this.generateData(50, this.thrusdayReads),
-        },
-        {
-          name: 'Friday',
-          data: this.generateData(50, this.fridayReads),
-        },
-        {
-          name: 'Saturday',
-          data: this.generateData(50, this.saturdayReads),
-        },
-        {
-          name: 'Sunday',
-          data: this.generateData(50, this.sundayReads),
-        },
-      ],
-      chart: {
-        height: 250,
-        type: 'heatmap',
-      },
-      dataLabels: {
-        enabled: false,
-      },
-      colors: ['#008FFB'],
-      title: {
-        text: 'Histórico de links acessados',
-      },
-    };
   }
 
-  public generateData(count, dayReadsWeek) {
-    //criar array de string das datas de 30 dias pra tras e 30 dias pra frente
+  public generateData(count, dayReadsWeek: Dayread[]) {
     const today = new Date();
     const allDates: Date[] = [];
     const allDatesAfter: Date[] = [];
@@ -104,6 +122,7 @@ export class HeatCalendarComponent {
       allDates.push(newPrevDate);
       allDatesAfter.push(newAfterDate);
     }
+
     allDates.push(today);
     allDates.push(...allDatesAfter);
 
@@ -115,15 +134,25 @@ export class HeatCalendarComponent {
     var i = 1;
     var series = [];
     while (i < count - 1) {
-      if (i % 10 === 0) var x = parsedDates[i];
+      if (i % 5 === 0) var x = parsedDates[i];
       else var x = '';
-      var y = Math.floor(Math.random() * (90 - 0 + 1)) + 0;
+
+      let contain: boolean = false;
+      let qnt = 0;
+      for (let aux = 0; aux < dayReadsWeek.length; aux++) {
+        if (dayReadsWeek[aux].date === parsedDates[i]) {
+            contain = true;
+            qnt = dayReadsWeek[aux].total;
+            break;
+        }
+      }
+
+      var y = qnt;
 
       series.push({
         x: x,
         y: y,
       });
-      console.log(series);
       i++;
     }
     return series;

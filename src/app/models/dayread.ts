@@ -1,5 +1,5 @@
 export interface Dayread {
-  total: Number;
+  total: number;
   dayWeek: String;
   user: String;
   date: String;

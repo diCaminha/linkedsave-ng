@@ -1,6 +1,6 @@
 <div>
-  <p *ngIf="true; else noRead" class="message-reads" fxLayoutAlign="center center">
-    Congrats, you've read 4 links!
+  <p *ngIf="quantityReads > 0; else noRead" class="message-reads" fxLayoutAlign="center center">
+    Congrats, you've read {{quantityReads}} links!
     <mat-icon class="icon-message-reads" color="primary">military_tech</mat-icon>
   </p>
   <ng-template #noRead>

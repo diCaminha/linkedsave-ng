@@ -10,6 +10,7 @@ import { LinksService } from '../links.service';
 export class LinkListComponent implements OnInit {
 
   links: Link[] = [];
+  quantityReads: number = 0;
 
   constructor(private linksService: LinksService) { }
 
@@ -17,6 +18,9 @@ export class LinkListComponent implements OnInit {
     this.linksService.getLinks();
     this.linksService.getLinksUpdateListener().subscribe(links => {
       this.links = links;
-    })
+    });
+    this.linksService.getCounterUpdateListener().subscribe(quantityReads => {
+      this.quantityReads = quantityReads;
+    });
   }
 }

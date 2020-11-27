@@ -30,7 +30,6 @@ export class SignupComponent {
         }
         
         this.authService.signup(newUser).subscribe(result => {
-            console.log(result.data);
             this.router.navigate(["/login"]);
         });
 

@@ -32,7 +32,6 @@ export class LinksService {
       .get<{ message: string; data: any }>(environment.API_URL + 'links')
       .pipe(
         map((result) => {
-          console.log(result.data);
           return result.data.map((link) => {
             return {
               title: link.title,
@@ -94,7 +93,6 @@ export class LinksService {
   }
 
   readLink(linkId: string) {
-    console.log(linkId);
     const linkToRead = this.links.find(l => l.id == linkId);
     if (!linkToRead.read) {
       let linksBkp = [...this.links];
@@ -109,7 +107,6 @@ export class LinksService {
             this.getCounterLinks();
           },
           (err) => {
-            console.log(err);
             this.links = linksBkp;
             this.linksUpdate.next(this.links);
           }

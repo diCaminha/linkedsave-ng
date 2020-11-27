@@ -28,7 +28,6 @@ export class LinkCreateComponent implements OnInit {
         this.linkForm.controls['linkUrl'].disable();
         this.isLoading = true;
         if (!this.isValidUrl()) {
-            console.log("not valid url");
             this.isLoading = false;
             this.linkForm.controls['linkUrl'].enable();
             this.linkForm.controls['linkUrl'].setErrors({ 'incorrect': true });
@@ -48,12 +47,10 @@ export class LinkCreateComponent implements OnInit {
         this.linkForm.controls['linkUrl'].enable();
         this.isLoading = true;
         if (this.linkForm.invalid) {
-            console.log("invalido");
             return;
         }
         
         if (!this.isValidUrl()) {
-            console.log("not valid url");
             this.isLoading = false;
             this.linkForm.controls['linkUrl'].enable();
             this.linkForm.controls['linkUrl'].setErrors({ 'incorrect': true });

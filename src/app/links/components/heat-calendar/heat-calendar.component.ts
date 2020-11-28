@@ -121,7 +121,7 @@ export class HeatCalendarComponent {
           },
           colors: ['#7b1fa2'],
           title: {
-            text: 'Histórico de links acessados',
+            text: 'Links read per day',
           },
         };
       },
@@ -176,10 +176,8 @@ export class HeatCalendarComponent {
 
       for (let aux = 0; aux < dayReadsWeek.length; aux++) {
         let date: Date = new Date(dayReadsWeek[aux].date);
-        let week = Math.floor(this.daysIntoYear(date)/7);
-        console.log(week);
+        let week = Math.floor(this.daysIntoYear(date) / 7);
         if (week === i) {
-            console.log(dayReadsWeek[aux].date, week);
           qnt = dayReadsWeek[aux].total;
         }
       }

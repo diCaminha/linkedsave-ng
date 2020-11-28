@@ -10,7 +10,6 @@
       </p>
   </ng-template>
 </div>
-<ls-heat-cal></ls-heat-cal>
 <div fxLayout="column" fxLayoutAlign="center center">
   <ls-card-link *ngFor="let link of links" [link]="link"></ls-card-link>
   <ls-empty-screen *ngIf="links.length <= 0"></ls-empty-screen>

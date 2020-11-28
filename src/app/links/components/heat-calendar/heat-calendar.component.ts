@@ -64,31 +64,52 @@ export class HeatCalendarComponent {
           series: [
             {
               name: 'Monday',
-              data: this.generateData(50, this.mondayReads),
+              data: this.generateData(
+                this.days_of_a_year(2020) / 7,
+                this.mondayReads
+              ),
             },
             {
               name: 'Tuesday',
-              data: this.generateData(50, this.tuesdayReads),
+              data: this.generateData(
+                this.days_of_a_year(2020) / 7,
+                this.tuesdayReads
+              ),
             },
             {
               name: 'Wednesday',
-              data: this.generateData(50, this.wednesdayReads),
+              data: this.generateData(
+                this.days_of_a_year(2020) / 7,
+                this.wednesdayReads
+              ),
             },
             {
               name: 'Thursday',
-              data: this.generateData(50, this.thrusdayReads),
+              data: this.generateData(
+                this.days_of_a_year(2020) / 7,
+                this.thrusdayReads
+              ),
             },
             {
               name: 'Friday',
-              data: this.generateData(50, this.fridayReads),
+              data: this.generateData(
+                this.days_of_a_year(2020) / 7,
+                this.fridayReads
+              ),
             },
             {
               name: 'Saturday',
-              data: this.generateData(50, this.saturdayReads),
+              data: this.generateData(
+                this.days_of_a_year(2020) / 7,
+                this.saturdayReads
+              ),
             },
             {
               name: 'Sunday',
-              data: this.generateData(50, this.sundayReads),
+              data: this.generateData(
+                this.days_of_a_year(2020) / 7,
+                this.sundayReads
+              ),
             },
           ],
           chart: {
@@ -119,31 +140,47 @@ export class HeatCalendarComponent {
       let newAfterDate = new Date();
       newPrevDate.setDate(today.getDate() - index);
       newAfterDate.setDate(today.getDate() + index);
-      allDates.push(newPrevDate);
+      allDates.unshift(newPrevDate);
       allDatesAfter.push(newAfterDate);
     }
 
     allDates.push(today);
     allDates.push(...allDatesAfter);
 
-    const parsedDates = allDates.map(
-      (date) =>
-        date.getMonth() + '-' + date.getUTCDate() + '-' + date.getFullYear()
-    );
+    const parsedDates = [
+      'None',
+      'Jan',
+      'Feb',
+      'Mar',
+      'Apr',
+      'May',
+      'Jun',
+      'Jul',
+      'Aug',
+      'Sep',
+      'Oct',
+      'Nov',
+      'Dez',
+    ];
 
     var i = 1;
+    let counterMonth = 1;
     var series = [];
     while (i < count - 1) {
-      if (i % 5 === 0) var x = parsedDates[i];
-      else var x = '';
+      if (i % 4 === 0) {
+        var x = parsedDates[counterMonth];
+        counterMonth++;
+      } else var x = '';
 
-      let contain: boolean = false;
       let qnt = 0;
+
       for (let aux = 0; aux < dayReadsWeek.length; aux++) {
-        if (dayReadsWeek[aux].date === parsedDates[i]) {
-            contain = true;
-            qnt = dayReadsWeek[aux].total;
-            break;
+        let date: Date = new Date(dayReadsWeek[aux].date);
+        let week = Math.floor(this.daysIntoYear(date)/7);
+        console.log(week);
+        if (week === i) {
+            console.log(dayReadsWeek[aux].date, week);
+          qnt = dayReadsWeek[aux].total;
         }
       }
 
@@ -156,5 +193,24 @@ export class HeatCalendarComponent {
       i++;
     }
     return series;
+  }
+
+  days_of_a_year(year) {
+    return this.isLeapYear(year) ? 366 : 365;
+  }
+
+  isLeapYear(year) {
+    return year % 400 === 0 || (year % 100 !== 0 && year % 4 === 0);
+  }
+
+  daysIntoYear(date) {
+    return (
+      (Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()) -
+        Date.UTC(date.getFullYear(), 0, 0)) /
+      24 /
+      60 /
+      60 /
+      1000
+    );
   }
 }

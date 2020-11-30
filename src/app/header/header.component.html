@@ -1,21 +1,21 @@
 <mat-toolbar color="accent">
   <span><a routerLink="/" class="font-color-pink">LinkSaved</a></span>
   <span class="spacer"></span>
-  <ul style="display: flex;">
+  <ul style="display: flex">
     <li>
       <a *ngIf="isAuth" routerLink="/dayreads" mat-button>
         <mat-icon>bar_chart</mat-icon>
       </a>
     </li>
     <li>
-      <a *ngIf="isAuth; else loginBtn" routerLink="/create" mat-button>
+      <a *ngIf="isAuth" routerLink="/create" mat-button>
         <mat-icon>control_point</mat-icon>
       </a>
     </li>
-    <ng-template #loginBtn>
-      <a routerLink="/login" mat-button>
-        <mat-icon>login</mat-icon>
+    <li>
+      <a (click)="logout()" mat-button>
+        <mat-icon style="color: red;">login</mat-icon>
       </a>
-    </ng-template>
+    </li>
   </ul>
 </mat-toolbar>

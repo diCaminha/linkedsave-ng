@@ -160,7 +160,7 @@ export class HeatCalendarComponent {
       'Sep',
       'Oct',
       'Nov',
-      'Dez',
+      'Dec',
     ];
 
     var i = 1;
@@ -190,6 +190,7 @@ export class HeatCalendarComponent {
       });
       i++;
     }
+
     return series;
   }
 
@@ -211,4 +212,5 @@ export class HeatCalendarComponent {
       1000
     );
   }
+
 }

@@ -7,6 +7,7 @@ import { title } from 'process';
 import { Observable, Subject } from 'rxjs';
 import { Router } from '@angular/router';
 import { link } from 'fs';
+import { AuthService } from '../auth/auth.service';
 
 @Injectable({
   providedIn: 'root',
@@ -17,7 +18,10 @@ export class LinksService {
   private linksUpdate = new Subject<Link[]>();
   private counterUpdate = new Subject<number>();
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(
+    private http: HttpClient, 
+    private router: Router,
+    private authService: AuthService) {}
 
   getLinksUpdateListener() {
     return this.linksUpdate.asObservable();
@@ -72,6 +76,9 @@ export class LinksService {
         this.links.push(res.data);
         this.linksUpdate.next(this.links);
         this.counterUpdate.next(this.counterReads);
+        this.router.navigate(['/']);
+      }, err => {
+        this.authService.logout();
         this.router.navigate(['/']);
       });
   }

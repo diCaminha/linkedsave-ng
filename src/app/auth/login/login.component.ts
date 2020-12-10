@@ -16,8 +16,7 @@ export class LoginComponent {
     });
 
     constructor(private formBuilder: FormBuilder,
-        private authService: AuthService,
-        private router: Router) { }
+        private authService: AuthService) { }
 
     onLogin() {
         this.isLoading = true;

@@ -5,18 +5,10 @@ import { DayReadsComponent } from './day-reads.component';
 import { NgModule } from '@angular/core';
 import { NgApexchartsModule } from 'ng-apexcharts';
 
-
-
 @NgModule({
-  declarations: [
-    DayReadsComponent
-  ],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    NgApexchartsModule
-  ],
+  declarations: [DayReadsComponent],
+  imports: [BrowserModule, HttpClientModule, NgApexchartsModule],
   providers: [],
-  bootstrap: [DayReadsComponent]
+  bootstrap: [DayReadsComponent],
 })
-export class DayReadsModule { }
+export class DayReadsModule {}

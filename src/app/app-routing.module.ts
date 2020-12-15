@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from './auth/auth.guard';
 import { LoginComponent } from './auth/login/login.component';
-import { SignupComponent } from './auth/signup/signup.component.';
+import { SignupComponent } from './auth/signup/signup.component';
+
 import { DayReadsComponent } from './dayreads/day-reads.component';
 import { LinkCreateComponent } from './links/link-create/link-create.component';
 import { LinkListComponent } from './links/link-list/link-list.component';

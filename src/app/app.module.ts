@@ -2,15 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatInputModule } from '@angular/material/input';
-import { MatButtonModule } from '@angular/material/button';
-import { MatCardModule } from '@angular/material/card';
-import { MatExpansionModule } from '@angular/material/expansion';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatIconModule } from '@angular/material/icon';
-import { MatTooltipModule } from '@angular/material/tooltip';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -25,6 +16,7 @@ import { HighlightOnHoverLinkDirective } from './directives/highlight-on-hover-l
 import { InputFocusDirective } from './directives/input-focus.directive';
 import { DayReadsModule } from './dayreads/day-reads.module';
 import { AuthModule } from './auth/auth.module';
+import { LSMaterialModule } from './material.module';
 
 
 
@@ -44,21 +36,11 @@ import { AuthModule } from './auth/auth.module';
     AppRoutingModule,
     FormsModule,
     BrowserAnimationsModule,
-    MatInputModule,
-    MatButtonModule,
-    MatCardModule,
-    MatToolbarModule,
-    MatExpansionModule,
     HttpClientModule,
-    FlexLayoutModule,
-    MatIconModule,
-    MatProgressSpinnerModule,
     ReactiveFormsModule,
-    MatTooltipModule,
     DayReadsModule,
-    AuthModule
-
-
+    AuthModule,
+    LSMaterialModule,
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
   bootstrap: [AppComponent]

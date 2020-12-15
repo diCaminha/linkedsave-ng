@@ -20,11 +20,11 @@ export type ChartOptions = {
 };
 
 @Component({
-  selector: 'ls-heat-cal',
-  templateUrl: './heat-calendar.component.html',
-  styleUrls: ['./heat-calendar.component.css'],
+  selector: 'ls-day-reads',
+  templateUrl: './day-reads.component.html',
+  styleUrls: ['./day-reads.component.css'],
 })
-export class HeatCalendarComponent {
+export class DayReadsComponent {
   @ViewChild('chart') chart: ChartComponent;
   public chartOptions: Partial<ChartOptions>;
   mondayReads: Dayread[] = [];

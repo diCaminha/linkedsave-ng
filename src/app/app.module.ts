@@ -26,7 +26,7 @@ import { CardLinkComponent } from './links/components/card-link/card-link.compon
 import { EmptyScreenComponent } from './links/components/empty-screen/empty-screen.component';
 import { HighlightOnHoverLinkDirective } from './directives/highlight-on-hover-link.directive';
 import { InputFocusDirective } from './directives/input-focus.directive';
-import { HeatCalendarComponent } from './links/components/heat-calendar/heat-calendar.component';
+import { DayReadsModule } from './dayreads/day-reads.module';
 
 
 
@@ -41,8 +41,7 @@ import { HeatCalendarComponent } from './links/components/heat-calendar/heat-cal
     CardLinkComponent,
     EmptyScreenComponent,
     HighlightOnHoverLinkDirective,
-    InputFocusDirective,
-    HeatCalendarComponent
+    InputFocusDirective
   ],
   imports: [
     BrowserModule,
@@ -60,7 +59,7 @@ import { HeatCalendarComponent } from './links/components/heat-calendar/heat-cal
     MatProgressSpinnerModule,
     ReactiveFormsModule,
     MatTooltipModule,
-    NgApexchartsModule
+    DayReadsModule
 
 
   ],

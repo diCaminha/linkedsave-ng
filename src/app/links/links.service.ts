@@ -17,9 +17,10 @@ export class LinksService {
   private counterUpdate = new Subject<number>();
 
   constructor(
-    private http: HttpClient, 
+    private http: HttpClient,
     private router: Router,
-    private authService: AuthService) {}
+    private authService: AuthService
+  ) {}
 
   getLinksUpdateListener() {
     return this.linksUpdate.asObservable();
@@ -65,20 +66,22 @@ export class LinksService {
   }
 
   addLink(link: Link) {
-    this.http
-      .post<{ message: string; data: Link }>(
-        environment.API_URL + 'links',
-        link
-      )
-      .subscribe((res) => {
-        this.links.push(res.data);
-        this.linksUpdate.next(this.links);
-        this.counterUpdate.next(this.counterReads);
-        this.router.navigate(['/']);
-      }, err => {
-        this.authService.logout();
-        this.router.navigate(['/']);
-      });
+    return this.http.post<{ message: string; data: Link }>(
+      environment.API_URL + 'links',
+      link
+    );
+  }
+
+  linkAdded(res) {
+    this.links.push(res.data);
+    this.linksUpdate.next(this.links);
+    this.counterUpdate.next(this.counterReads);
+    this.router.navigate(['/']);
+  }
+
+  errorAddingLink() {
+    this.authService.logout();
+    this.router.navigate(['/']);
   }
 
   deleteLink(id) {
@@ -98,7 +101,7 @@ export class LinksService {
   }
 
   readLink(linkId: string) {
-    const linkToRead = this.links.find(l => l.id == linkId);
+    const linkToRead = this.links.find((l) => l.id == linkId);
     if (!linkToRead.read) {
       let linksBkp = [...this.links];
       this.links.map((l) => {

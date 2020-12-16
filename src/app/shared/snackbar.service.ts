@@ -13,14 +13,14 @@ export class SnackbarService {
 
     constructor(private _snackBar: MatSnackBar){}
 
-  openSnackBarSuccess(message, action) {
+  openSnackBarSuccess(message, action?) {
     let config = new MatSnackBarConfig();
     config.duration = 3000;
 
     this._snackBar.open(message, action, config);
   }
 
-  openSnackBarError(message, action) {
+  openSnackBarError(message, action?) {
     let config = new MatSnackBarConfig();
     config.panelClass = ['ls-snackbar-error'];
     config.duration = 3000;

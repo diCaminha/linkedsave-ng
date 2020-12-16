@@ -4,7 +4,7 @@
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
-.ls-snackbar {
-    text-align: center;
-    background-color: green;
+.ls-snackbar-error {
+    background-color: red;
+    color: white;
 }

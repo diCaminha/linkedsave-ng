@@ -17,6 +17,7 @@ import { InputFocusDirective } from './directives/input-focus.directive';
 import { DayReadsModule } from './dayreads/day-reads.module';
 import { AuthModule } from './auth/auth.module';
 import { LSMaterialModule } from './material.module';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 
 
@@ -41,6 +42,7 @@ import { LSMaterialModule } from './material.module';
     DayReadsModule,
     AuthModule,
     LSMaterialModule,
+    MatSnackBarModule
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
   bootstrap: [AppComponent]

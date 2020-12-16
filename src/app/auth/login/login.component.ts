@@ -1,6 +1,7 @@
 import { Route } from '@angular/compiler/src/core';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm } from '@angular/forms';
+import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 
@@ -19,7 +20,9 @@ export class LoginComponent {
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private _snackBar: MatSnackBar
+
   ) {}
 
   onLogin() {
@@ -29,10 +32,18 @@ export class LoginComponent {
 
     this.authService.login(email, password).subscribe(response => {
         this.authService.savingToken(response);
+        this.openSnackBar();
         this.router.navigate(['/']);
     }, err => {
         console.log(err);
         this.isLoading = false;
     })
+  }
+
+  openSnackBar() {
+    let config = new MatSnackBarConfig();
+    config.duration = 3000;
+
+    this._snackBar.open("Welcome to LinkSaved!", null, config);
   }
 }

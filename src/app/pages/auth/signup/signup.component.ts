@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { User } from 'src/app/models/user';
+import { User } from 'src/app/core/models/user';
 import { SnackbarService } from 'src/app/shared/snackbar.service';
 import { AuthService } from '../auth.service';
 

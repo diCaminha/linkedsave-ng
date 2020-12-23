@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Link } from 'src/app/models/link';
-import { LinksService } from '../links.service';
+import { Link } from 'src/app/core/models/link';
+import { LinksService } from 'src/app/links/links.service';
 
 @Component({
   selector: 'ls-link-list',

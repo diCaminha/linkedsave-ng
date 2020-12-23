@@ -1,8 +1,8 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
-import { Link } from 'src/app/models/link';
+import { Link } from 'src/app/core/models/link';
+import { LinksService } from 'src/app/links/links.service';
 import { SnackbarService } from 'src/app/shared/snackbar.service';
-import { LinksService } from '../links.service';
 
 @Component({
   styleUrls: ['./link-create.component.css'],

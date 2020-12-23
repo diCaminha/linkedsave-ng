@@ -2,8 +2,8 @@ import { Route } from '@angular/compiler/src/core';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { SnackbarService } from 'src/app/shared/snackbar.service';
-import { AuthService } from '../auth.service';
+import { SnackbarService } from 'src/app/core/services/snackbar.service';
+import { AuthService } from '../../../core/services/auth.service';
 
 @Component({
   selector: 'ls-login',

@@ -9,7 +9,7 @@ import {
   ChartComponent,
 } from 'ng-apexcharts';
 import { Dayread } from 'src/app/core/models/dayread';
-import { DayreadsService } from './dayreads.service';
+import { DayreadsService } from '../../core/services/dayreads.service';
 
 export type ChartOptions = {
   series: ApexAxisChartSeries;

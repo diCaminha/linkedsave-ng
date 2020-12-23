@@ -2,8 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Observable, Subject, throwError } from 'rxjs';
+import { User } from 'src/app/models/user';
 import { environment } from 'src/environments/environment';
-import { User } from '../models/user';
 
 @Injectable({
   providedIn: 'root',

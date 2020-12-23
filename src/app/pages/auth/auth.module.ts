@@ -6,8 +6,8 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AppRoutingModule } from '../app-routing.module';
-import { LSMaterialModule } from '../material.module';
+import { AppRoutingModule } from 'src/app/app-routing.module';
+import { LSMaterialModule } from 'src/app/material.module';
 
 @NgModule({
   declarations: [LoginComponent, SignupComponent],

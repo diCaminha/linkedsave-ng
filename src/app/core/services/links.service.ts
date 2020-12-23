@@ -1,11 +1,11 @@
 import { HttpClient } from '@angular/common/http';
-import { environment } from '../../environments/environment';
+import { environment } from '../../../environments/environment';
 import { Injectable } from '@angular/core';
 import { Link } from '../models/link';
 import { map } from 'rxjs/operators';
 import { Observable, Subject } from 'rxjs';
 import { Router } from '@angular/router';
-import { AuthService } from '../auth/auth.service';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root',

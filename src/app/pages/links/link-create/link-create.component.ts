@@ -103,7 +103,7 @@ export class LinkCreateComponent implements OnInit {
 
   clearLink() {
     this.linkForm.controls['linkUrl'].enable();
-    this.linkPreview = null;
+    this.linkPreview = null;        
     this.linkForm.reset();
   }
 }

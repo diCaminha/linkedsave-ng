@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Subscription } from 'rxjs';
-import { AuthService } from './auth/auth.service';
-import { Link } from './models/link';
+import { AuthService } from './core/services/auth.service';
 
 @Component({
   selector: 'app-root',

@@ -5,19 +5,19 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LinkCreateComponent } from './links/link-create/link-create.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HeaderComponent } from './header/header.component';
-import { LinkListComponent } from './links/link-list/link-list.component';
-import { AuthInterceptor } from './auth/auth-interceptor';
-import { CardLinkComponent } from './links/components/card-link/card-link.component';
-import { EmptyScreenComponent } from './links/components/empty-screen/empty-screen.component';
-import { HighlightOnHoverLinkDirective } from './directives/highlight-on-hover-link.directive';
-import { InputFocusDirective } from './directives/input-focus.directive';
-import { DayReadsModule } from './dayreads/day-reads.module';
-import { AuthModule } from './auth/auth.module';
 import { LSMaterialModule } from './material.module';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { LinkCreateComponent } from './pages/links/link-create/link-create.component';
+import { HeaderComponent } from './shared/components/header/header.component';
+import { LinkListComponent } from './pages/links/link-list/link-list.component';
+import { CardLinkComponent } from './shared/components/card-link/card-link.component';
+import { EmptyScreenComponent } from './pages/empty-screen/empty-screen.component';
+import { HighlightOnHoverLinkDirective } from './shared/directives/highlight-on-hover-link.directive';
+import { InputFocusDirective } from './shared/directives/input-focus.directive';
+import { DayReadsModule } from './pages/dayreads/day-reads.module';
+import { AuthModule } from './pages/auth/auth.module';
+import { AuthInterceptor } from './core/interceptors/auth-interceptor';
 
 
 

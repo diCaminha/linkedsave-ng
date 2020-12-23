@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { url } from 'inspector';
-import { Link } from 'src/app/models/link';
-import { LinksService } from '../../links.service';
+import { Link } from 'src/app/core/models/link';
+import { LinksService } from 'src/app/core/services/links.service';
 
 @Component({
   selector: 'ls-card-link',

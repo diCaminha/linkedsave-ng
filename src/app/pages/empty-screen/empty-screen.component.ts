@@ -5,6 +5,4 @@ import { Component } from '@angular/core';
     templateUrl: './empty-screen.component.html',
     styleUrls: ['./empty-screen.component.css']
 })
-export class EmptyScreenComponent {
-    
-}
+export class EmptyScreenComponent {}

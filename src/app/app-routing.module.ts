@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AuthGuard } from './auth/auth.guard';
-import { LoginComponent } from './auth/login/login.component';
-import { SignupComponent } from './auth/signup/signup.component';
 
-import { DayReadsComponent } from './dayreads/day-reads.component';
-import { LinkCreateComponent } from './links/link-create/link-create.component';
-import { LinkListComponent } from './links/link-list/link-list.component';
+import { AuthGuard } from './core/guards/auth.guard';
+import { LoginComponent } from './pages/auth/login/login.component';
+import { SignupComponent } from './pages/auth/signup/signup.component';
+import { DayReadsComponent } from './pages/dayreads/day-reads.component';
+import { LinkCreateComponent } from './pages/links/link-create/link-create.component';
+import { LinkListComponent } from './pages/links/link-list/link-list.component';
 
 const routes: Routes = [
   { path: '', canActivate: [AuthGuard], component: LinkListComponent },
